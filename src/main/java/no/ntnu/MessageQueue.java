@@ -40,8 +40,9 @@ public class MessageQueue implements Channel {
             }
         } catch (InterruptedException e) {
         } finally {
+            Object data = queue.remove(0);
             notify();
-            return queue.remove(0);
+            return data;
         }
     }
 
